@@ -414,8 +414,8 @@ class LoanRepository extends AbstractRepository {
       where: sequelizeFilter.getWhere(),
       include,
       attributes: requestedAttributesInTable,
-      limit: limit ? limit : undefined,
-      offset: offset || undefined,
+      limit: limit ? parseInt(limit) : undefined,
+      offset: parseInt(offset) || undefined,
       order: orderBy
         ? [orderBy.split('_')]
         : [['createdAt', 'DESC']],
@@ -446,7 +446,7 @@ class LoanRepository extends AbstractRepository {
     const records = await models.loan.findAll({
       attributes: ['id', 'id'],
       where: filter.getWhere(),
-      limit: limit || undefined,
+      limit: parseInt(limit) || undefined,
       orderBy: [['id', 'ASC']],
     });
 

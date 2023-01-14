@@ -90,8 +90,8 @@ module.exports = class AuditLogRepository extends AbstractRepository {
     return models.auditLog.findAndCountAll({
       where: sequelizeFilter.getWhere(),
       include: sequelizeFilter.getInclude(),
-      limit: limit ? limit : undefined,
-      offset: offset || undefined,
+      limit: limit ? parseInt(limit) : undefined,
+      offset: parseInt(offset) || undefined,
       order: orderBy
         ? [orderBy.split('_')]
         : [['timestamp', 'DESC']],

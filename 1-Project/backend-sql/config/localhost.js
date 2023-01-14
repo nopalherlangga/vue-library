@@ -4,10 +4,10 @@ module.exports = {
   env: 'localhost',
 
   database: {
-    username: 'postgres',
-    dialect: 'postgres',
-    password: '',
-    database: 'development',
+    username: 'root',
+    dialect: 'mysql',
+    password: '123',
+    database: 'vue',
     host: 'localhost',
     logging: console.log,
     operatorsAliases: false,

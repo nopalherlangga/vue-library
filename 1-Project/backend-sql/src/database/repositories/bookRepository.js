@@ -392,8 +392,8 @@ class BookRepository extends AbstractRepository {
       where: sequelizeFilter.getWhere(),
       include,
       attributes: requestedAttributesInTable,
-      limit: limit ? limit : undefined,
-      offset: offset || undefined,
+      limit: limit ? parseInt(limit) : undefined,
+      offset: parseInt(offset) || undefined,
       order: orderBy
         ? [orderBy.split('_')]
         : [['createdAt', 'DESC']],
@@ -424,7 +424,7 @@ class BookRepository extends AbstractRepository {
     const records = await models.book.findAll({
       attributes: ['id', 'isbn'],
       where: filter.getWhere(),
-      limit: limit || undefined,
+      limit: parseInt(limit) || undefined,
       orderBy: [['isbn', 'ASC']],
     });
 
